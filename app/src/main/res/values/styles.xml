@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="text_tiny">
+        <item name="android:textSize">@dimen/tiny_text</item>
+    </style>
+
+    <style name="text_small">
+        <item name="android:textSize">@dimen/small_text</item>
+    </style>
+
+    <style name="text_normal">
+        <item name="android:textSize">@dimen/normal_text</item>
+    </style>
+
+    <style name="text_big">
+        <item name="android:textSize">@dimen/big_text</item>
+    </style>
+
+    <style name="text_super_big">
+        <item name="android:textSize">@dimen/super_big_text</item>
+    </style>
+
+    <style name="text_normal.bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_big.bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_super_big.bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

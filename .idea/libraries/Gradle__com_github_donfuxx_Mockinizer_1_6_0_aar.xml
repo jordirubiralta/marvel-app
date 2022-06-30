@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.donfuxx:Mockinizer:1.6.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c8aee15f89b49810689a7adad4101e4a/transformed/Mockinizer-1.6.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c8aee15f89b49810689a7adad4101e4a/transformed/Mockinizer-1.6.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c8aee15f89b49810689a7adad4101e4a/transformed/Mockinizer-1.6.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.donfuxx/Mockinizer/1.6.0/d89359a2b7003a00d3d8606e0382bc4d409880ef/Mockinizer-1.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
