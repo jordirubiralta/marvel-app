@@ -18,6 +18,7 @@ import com.jrubiralta.marvelapp.presentation.commons.collectAction
 import com.jrubiralta.marvelapp.presentation.commons.collectEvent
 import com.jrubiralta.marvelapp.presentation.commons.collectState
 import com.jrubiralta.marvelapp.presentation.ui.marvellist.adapter.MarvelListAdapter
+import com.jrubiralta.marvelapp.presentation.ui.marvellist.adapter.MarvelLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -53,7 +54,10 @@ class MarvelListFragment : Fragment() {
         marvelListAdapter = MarvelListAdapter(::onItemClick)
         binding.rvMarvelList.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = marvelListAdapter
+            adapter = marvelListAdapter.withLoadStateHeaderAndFooter(
+                header = MarvelLoadStateAdapter { marvelListAdapter.retry() },
+                footer = MarvelLoadStateAdapter { marvelListAdapter.retry() }
+            )
             setHasFixedSize(true)
         }
     }
