@@ -71,9 +71,11 @@ class MarvelListFragment : Fragment() {
     private fun launchEvent(event: MarvelListViewModel.Event) {
         when (event) {
             is MarvelListViewModel.Event.ProceedToCharacterDetails -> {
-                findNavController().navigate(
-                    MarvelListFragmentDirections.actionGoToCharacterDetail(event.model)
-                )
+                event.model.id?.let {
+                    findNavController().navigate(
+                        MarvelListFragmentDirections.actionGoToCharacterDetail(it)
+                    )
+                }
             }
         }
     }

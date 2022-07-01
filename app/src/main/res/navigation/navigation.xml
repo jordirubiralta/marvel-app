@@ -29,8 +29,8 @@
         tools:layout="@layout/fragment_character_detail">
 
         <argument
-            android:name="characterModel"
-            app:argType="com.jrubiralta.marvelapp.domain.model.CharacterModel"
+            android:name="id"
+            app:argType="integer"
             app:nullable="false" />
 
     </fragment>
