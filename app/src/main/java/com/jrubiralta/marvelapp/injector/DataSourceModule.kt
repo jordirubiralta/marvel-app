@@ -1,6 +1,7 @@
 package com.jrubiralta.marvelapp.injector
 
 import com.jrubiralta.marvelapp.data.api.MarvelApi
+import com.jrubiralta.marvelapp.data.datasources.MarvelPagingSource
 import com.jrubiralta.marvelapp.data.datasources.RemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -14,5 +15,8 @@ class DataSourceModule {
 
     @Provides
     fun remoteDataSourceProvider(marvelApi: MarvelApi) = RemoteDataSource(marvelApi)
+
+    @Provides
+    fun pagingSourceProvider(marvelApi: MarvelApi) = MarvelPagingSource(marvelApi)
 
 }

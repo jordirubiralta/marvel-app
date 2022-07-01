@@ -8,9 +8,6 @@ class RemoteDataSource(
     private val marvelApi: MarvelApi
 ) {
 
-    suspend fun getCharacterList(): Response<CharacterListResponse> =
-        marvelApi.getCharactersList()
-
     suspend fun getCharacterDetail(characterId: Int): Response<CharacterListResponse> =
         marvelApi.getCharacterDetail(characterId)
 

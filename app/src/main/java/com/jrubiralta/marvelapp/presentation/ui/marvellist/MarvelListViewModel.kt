@@ -2,17 +2,27 @@ package com.jrubiralta.marvelapp.presentation.ui.marvellist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.jrubiralta.marvelapp.domain.commons.NetworkResult
 import com.jrubiralta.marvelapp.domain.model.CharacterModel
 import com.jrubiralta.marvelapp.domain.usecases.GetCharacterListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filterIsInstance
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,22 +36,8 @@ class MarvelListViewModel @Inject constructor(private val getCharacterListUseCas
     private val _state = MutableStateFlow(MarvelListState(isLoading = true))
     val state: StateFlow<MarvelListState> = _state.asStateFlow()
 
-    fun getCharacterList() {
-        viewModelScope.launch(Dispatchers.Main) {
-            _state.update { it.copy(isLoading = true) }
-            val result = getCharacterListUseCase.invoke()
-            _state.update {
-                when (result) {
-                    is NetworkResult.Error -> {
-                        it.copy(isLoading = false, errorMessage = result.message?.message)
-                    }
-                    is NetworkResult.Success -> {
-                        it.copy(isLoading = false, characterList = result.data.charactersList)
-                    }
-                }
-            }
-        }
-    }
+    val characterList = getCharacterListUseCase.invoke()
+        .cachedIn(viewModelScope)
 
     fun navigateToCharacterDetails(model: CharacterModel) {
         viewModelScope.launch {
@@ -59,5 +55,8 @@ class MarvelListViewModel @Inject constructor(private val getCharacterListUseCas
 
     sealed class Event {
         data class ProceedToCharacterDetails(val model: CharacterModel) : Event()
+        object Scroll : Event()
     }
 }
+
+private const val LAST_QUERY_SCROLLED: String = "last_query_scrolled"

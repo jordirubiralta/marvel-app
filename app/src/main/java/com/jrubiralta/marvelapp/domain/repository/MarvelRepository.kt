@@ -1,12 +1,13 @@
 package com.jrubiralta.marvelapp.domain.repository
 
+import androidx.paging.PagingData
 import com.jrubiralta.marvelapp.domain.commons.NetworkResult
 import com.jrubiralta.marvelapp.domain.model.CharacterModel
-import com.jrubiralta.marvelapp.domain.model.DataModel
+import kotlinx.coroutines.flow.Flow
 
 interface MarvelRepository {
 
-    suspend fun getCharacterList(): NetworkResult<DataModel>
+    fun getCharacterList(): Flow<PagingData<CharacterModel>>
 
     suspend fun getCharacterDetail(characterId: Int): NetworkResult<CharacterModel>
 
