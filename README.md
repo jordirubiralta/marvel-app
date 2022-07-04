@@ -1,16 +1,20 @@
-# zeelo-library
-This repository is for Zeelo technical test
+# Marvel App
 
 ## How to run it
 Simply clone the project, sync, compile and install the app.
 
 ## About
-This app consists of 3 principal activities:
-- **Books List**: this screen has books list. It has pagination, so only 20 books are charged and when we scroll to the last item, another 20 books are charged. 
-- **Book Details**: when we click to one book, the app navigate to this screen. This screen shows image, title, author and price. 
-- **Add Book**: when we click to floating button, the app navigate to this screen. Here we have 4 input fields to get all book information.
+This app consists of 2 principal activities:
+- **Marvel Characters List**: this screen shows marvel characters list. The list has paging  to get more items when we scroll to the end of the list..  
+- **Character Details**: when we click to one character, the app navigate to this screen. This screen shows image, name and description. This screen is done with Jetpack Compose. 
+
 
 ## Libraries
+**Android**
+- Jetpack Compose
+- Coil Compose
+
+
 **Services**:
 - Retrofit2
 - Gson
@@ -18,10 +22,7 @@ This app consists of 3 principal activities:
 
 **Dependency injection**:
 - Hilt
- 
-**Images**:
-- Glide
 
-**Mock Services**:
-- MockWebServer
-- Mockinizer
+**Paging**
+- Paging 3
+
